@@ -1,0 +1,95 @@
+#include <stdio.h>
+#include <math.h>
+
+void add(double x, double y) {
+    printf("The result is: %.2f\n", x + y);
+}
+
+void subtract(double x, double y) {
+    printf("The result is: %.2f\n", x - y);
+}
+
+void multiply(double x, double y) {
+    printf("The result is: %.2f\n", x * y);
+}
+
+void divide(double x, double y) {
+    if (y != 0)
+        printf("The result is: %.2f\n", x / y);
+    else
+        printf("Error! Division by zero.\n");
+}
+
+void square_root(double x) {
+    if (x >= 0)
+        printf("The result is: %.2f\n", sqrt(x));
+    else
+        printf("Error! Cannot compute the square root of a negative number.\n");
+}
+
+void power(double x, double y) {
+    printf("The result is: %.2f\n", pow(x, y));
+}
+
+void logarithm(double x, double base) {
+    if (x > 0 && base > 0 && base != 1)
+        printf("The result is: %.2f\n", log(x) / log(base));
+    else
+        printf("Error! Invalid input for logarithm.\n");
+}
+
+int main() {
+    int choice;
+    double num1, num2;
+
+    printf("Welcome to the multifunction calculator!\n");
+    printf("Available operations:\n");
+    printf("1. Addition\n");
+    printf("2. Subtraction\n");
+    printf("3. Multiplication\n");
+    printf("4. Division\n");
+    printf("5. Square Root\n");
+    printf("6. Power\n");
+    printf("7. Logarithm\n");
+
+    printf("Enter the number of the operation you want to perform: ");
+    scanf("%d", &choice);
+
+    if (choice >= 1 && choice <= 6) {
+        printf("Enter the first number: ");
+        scanf("%lf", &num1);
+        printf("Enter the second number: ");
+        scanf("%lf", &num2);
+    }
+
+    switch (choice) {
+        case 1:
+            add(num1, num2);
+            break;
+        case 2:
+            subtract(num1, num2);
+            break;
+        case 3:
+            multiply(num1, num2);
+            break;
+        case 4:
+            divide(num1, num2);
+            break;
+        case 5:
+            square_root(num1);
+            break;
+        case 6:
+            power(num1, num2);
+            break;
+        case 7:
+            printf("Enter the base: ");
+            double base;
+            scanf("%lf", &base);
+            logarithm(num1, base);
+            break;
+        default:
+            printf("Invalid input. Please select a valid operation.\n");
+    }
+
+    return 0;
+}
